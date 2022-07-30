@@ -1,0 +1,38 @@
+<!-- <div class="card">
+    <div class="card-header">
+        Album - UserId - {{ user_id_from_query_param }}
+    </div>
+    <div class="card-body" *ngFor="let album of user_albums">
+      <h5 class="card-title">{{album.title}}</h5>
+    <button class="btn btn-secondory bg-info btn-sm" (click)="view_photo_click(album)">View Photo</button>
+    </div>
+  </div> -->
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <mat-form-field fxFlex="40%">
+                <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+
+  <div class="container-fluid">
+    <mat-table [dataSource]="user_albums" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="view_photo_click(element)"> {{element.title}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>

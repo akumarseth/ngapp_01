@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-header">
+        Post - PostId - {{ post_id_from_query_param }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{post_details.title}}</h5>
+        <p class="card-text">{{post_details.body}}.</p>
+    </div>
+    <div class="card-footer">
+        Comments
+    </div>
+    <div class="card">
+        <div class="d-flex" *ngFor="let comment of post_comments">
+            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
+            <div class="ms-3">
+                <div class="fw-bold">{{comment.name}}</div>
+                <div class="fw-bold">{{comment.email}}</div>
+                <p>{{comment.body}}</p>
+            </div>
+        </div>
+    </div>
+</div>

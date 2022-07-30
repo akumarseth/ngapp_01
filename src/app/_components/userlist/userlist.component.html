@@ -1,1 +1,72 @@
-<p>userlist works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="btn-group me-2" role="group" aria-label="Basic button group">
+                <button type="button" class="btn btn-primary" [disabled]="!isrowselected"
+                    (click)="click_button('Post')">Post</button>
+                <button type="button" class="btn btn-primary" [disabled]="!isrowselected"
+                    (click)="click_button('Album')">Album</button>
+                <button type="button" class="btn btn-primary" [disabled]="!isrowselected"
+                    (click)="click_button('Todo')">Todo</button>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <mat-form-field fxFlex="40%">
+                <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <mat-table [dataSource]="user_data" class="mat-elevation-z8">
+        <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="selectHandler(row)"
+                    [checked]="selection.isSelected(row)">
+                </mat-checkbox>
+            </mat-cell>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef> username </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="website">
+            <mat-header-cell *matHeaderCellDef> Website </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.website}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+
+    <!-- <pre>
+      <h3>Selected :</h3>
+      {{selection.selected | json}}
+    </pre> -->
+</div>

@@ -1,0 +1,44 @@
+<!-- <div class="card">
+    <div class="card-header">
+        Post - UserId - {{ user_id_from_query_param }}
+    </div>
+    <div class="card-body" *ngFor="let post of user_posts">
+        <h5 class="card-title">{{post.title}}</h5>
+        <p class="card-text">{{post.body}}.</p>
+        <Button class="btn btn-secondory bg-info btn-sm" (click)="view_comment_click(post)">View Comment</Button>
+    </div>
+</div> -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+            <mat-form-field fxFlex="40%">
+                <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <mat-table [dataSource]="user_posts" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element" (click)="view_comment_click(element)"> {{element.title}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="body">
+            <mat-header-cell *matHeaderCellDef> body </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.body}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+    </mat-table>
+</div>
