@@ -53,7 +53,6 @@ export class UserlistComponent implements OnInit {
   get_users_data() {
     this.services.get_users().subscribe(data => {
       this.user_data = new MatTableDataSource<any>(data)
-
     });
   }
 
@@ -70,10 +69,10 @@ export class UserlistComponent implements OnInit {
     this.selection.toggle(row);
   }
 
-  onChange(typeValue: number) {
-    this.displayType = typeValue;
-    this.selection.clear();
-  }
+  // onChange(typeValue: number) {
+  //   this.displayType = typeValue;
+  //   this.selection.clear();
+  // }
 
 
   applyFilter(event: Event) {

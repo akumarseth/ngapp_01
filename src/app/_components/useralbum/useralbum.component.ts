@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonserviveService } from 'src/app/_services/commonservive.service';
 import {Router, ActivatedRoute} from "@angular/router"
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: 'app-useralbum',
@@ -34,7 +35,8 @@ export class UseralbumComponent implements OnInit {
 
   get_user_album(){
     this.services.get_album_by_userid(this.user_id_from_query_param).subscribe(data => {
-      this.user_albums = data
+      // this.user_albums = data
+      this.user_albums = new MatTableDataSource<any>(data)
     });
   }
 

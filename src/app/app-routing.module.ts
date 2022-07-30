@@ -27,27 +27,27 @@ const routes: Routes = [
       breadcrumb: "Users"
     }
   },
-  {
-    path: "posts",
-    component: PostlistComponent,
-    data: {
-      breadcrumb: "Posts"
-    }
-  },
-  {
-    path: "albums",
-    component: AlbumlistComponent,
-    data: {
-      breadcrumb: "Albums"
-    }
-  },
-  {
-    path: "todos",
-    component: TodolistComponent,
-    data: {
-      breadcrumb: "Todos"
-    }
-  },
+  // {
+  //   path: "posts",
+  //   component: PostlistComponent,
+  //   data: {
+  //     breadcrumb: "Posts"
+  //   }
+  // },
+  // {
+  //   path: "albums",
+  //   component: AlbumlistComponent,
+  //   data: {
+  //     breadcrumb: "Albums"
+  //   }
+  // },
+  // {
+  //   path: "todos",
+  //   component: TodolistComponent,
+  //   data: {
+  //     breadcrumb: "Todos"
+  //   }
+  // },
   {
     path: "userpost",
     component: UserpostComponent,
